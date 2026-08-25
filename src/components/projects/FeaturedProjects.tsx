@@ -19,7 +19,7 @@ export function FeaturedProjects() {
             className="max-w-2xl"
           >
             <h2 className="text-sm font-mono text-accent uppercase tracking-widest mb-3">
-              // Featured Work
+              {"//"} Featured Work
             </h2>
             <h3 className="text-3xl md:text-5xl font-bold tracking-tight">
               Selected Projects
