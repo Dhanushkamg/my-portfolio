@@ -13,7 +13,7 @@ export function Contact() {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-sm font-mono text-accent uppercase tracking-widest mb-3">
@@ -27,13 +27,7 @@ export function Contact() {
             </p>
           </motion.div>
 
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-6"
-          >
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <a 
               href={`mailto:${personal.email}`}
               className="inline-flex items-center gap-3 bg-foreground text-background hover:bg-foreground/90 px-8 py-4 rounded-md font-medium text-lg transition-colors w-full sm:w-auto justify-center"
@@ -48,15 +42,9 @@ export function Contact() {
               <Phone className="w-5 h-5" />
               Call Me
             </a>
-          </motion.div>
+          </div>
 
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="mt-16 flex items-center justify-center gap-8"
-          >
+          <div className="mt-16 flex items-center justify-center gap-8">
             <a 
               href={personal.github} 
               target="_blank" 
@@ -90,7 +78,7 @@ export function Contact() {
               </div>
               <span className="font-mono text-xs">Email</span>
             </a>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

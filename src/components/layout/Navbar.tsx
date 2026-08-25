@@ -69,8 +69,6 @@ export function Navbar() {
           <a
             href={personal.resumeUrl}
             download="Dhanushka-Madhushanka-CV.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
             className="text-sm font-medium text-accent hover:text-accent-hover transition-colors"
           >
             Resume
@@ -118,8 +116,6 @@ export function Navbar() {
               <a
                 href={personal.resumeUrl}
                 download="Dhanushka-Madhushanka-CV.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
                 onClick={() => setIsOpen(false)}
                 className="text-sm font-medium text-accent hover:text-accent-hover transition-colors"
               >

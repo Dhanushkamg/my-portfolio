@@ -52,8 +52,6 @@ export function Hero() {
               <a
                 href={personal.resumeUrl}
                 download="Dhanushka-Madhushanka-CV.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 bg-surface hover:bg-surface/80 border border-border text-foreground px-6 py-3 rounded-md font-medium transition-colors"
               >
                 <Download className="w-4 h-4" />
