@@ -13,8 +13,9 @@ export function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }) {
-  const project = projects.find((p) => p.slug === params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
   if (!project) return { title: "Not Found" };
   return {
     title: `${project.title} | Projects`,
@@ -22,8 +23,9 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
   };
 }
 
-export default function ProjectDetail({ params }: { params: { slug: string } }) {
-  const project = projects.find((p) => p.slug === params.slug);
+export default async function ProjectDetail({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
 
   if (!project) {
     notFound();
@@ -37,7 +39,7 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
           <div className="max-w-4xl mx-auto">
             {/* Header */}
             <div className="mb-12">
-              <Link href="/projects" className="inline-flex items-center gap-2 text-sm font-medium text-muted hover:text-foreground transition-colors mb-8">
+              <Link href="/#projects" className="inline-flex items-center gap-2 text-sm font-medium text-muted hover:text-foreground transition-colors mb-8">
                 <ArrowLeft className="w-4 h-4" />
                 Back to Projects
               </Link>
@@ -75,7 +77,7 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
                     className="inline-flex items-center gap-2 bg-foreground text-background hover:bg-foreground/90 px-5 py-2.5 rounded-md font-medium text-sm transition-colors"
                   >
                     <ExternalLink className="w-4 h-4" />
-                    Live Demo
+                    Live Website
                   </a>
                 ) : null}
               </div>
@@ -121,7 +123,32 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
                   </div>
                 </section>
 
-                {project.contributions && project.contributions.length > 0 && (
+                {project.detailedContributions && project.detailedContributions.length > 0 ? (
+                  <section>
+                    <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+                      <span className="text-accent font-mono text-sm">{"//"} 02</span>
+                      My Core Contributions
+                    </h2>
+                    <div className="space-y-8">
+                      {project.detailedContributions.map((contrib, idx) => (
+                        <div key={idx} className="bg-surface/50 border border-border rounded-lg p-5">
+                          <h3 className="text-lg font-bold text-foreground mb-3 flex items-center gap-2">
+                            <span className="w-2 h-2 rounded-full bg-accent" />
+                            {contrib.category}
+                          </h3>
+                          <ul className="space-y-2 ml-4">
+                            {contrib.items.map((item, itemIdx) => (
+                              <li key={itemIdx} className="flex gap-3 text-muted text-sm">
+                                <CheckCircle2 className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+                ) : project.contributions && project.contributions.length > 0 ? (
                   <section>
                     <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
                       <span className="text-accent font-mono text-sm">{"//"} 02</span>
@@ -136,7 +163,7 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
                       ))}
                     </div>
                   </section>
-                )}
+                ) : null}
                 
               </div>
 

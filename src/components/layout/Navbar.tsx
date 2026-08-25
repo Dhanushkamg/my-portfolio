@@ -54,7 +54,7 @@ export function Navbar() {
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => {
-            const linkHref = isHome ? link.href : `/${link.href}`;
+            const linkHref = isHome ? link.href.replace(/^\//, "") : link.href;
             return (
               <Link
                 key={link.name}
@@ -66,14 +66,15 @@ export function Navbar() {
             )
           })}
           <div className="h-4 w-px bg-border mx-2" />
-          <Link
+          <a
             href={personal.resumeUrl}
+            download="Dhanushka-Madhushanka-CV.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm font-medium text-accent hover:text-accent-hover transition-colors"
           >
             Resume
-          </Link>
+          </a>
           <ThemeToggle />
         </nav>
 
@@ -101,7 +102,7 @@ export function Navbar() {
           >
             <nav className="flex flex-col py-4 px-4 gap-4">
               {navLinks.map((link) => {
-                const linkHref = isHome ? link.href : `/${link.href}`;
+                const linkHref = isHome ? link.href.replace(/^\//, "") : link.href;
                 return (
                   <Link
                     key={link.name}
@@ -114,15 +115,16 @@ export function Navbar() {
                 )
               })}
               <div className="h-px w-full bg-border my-2" />
-              <Link
+              <a
                 href={personal.resumeUrl}
+                download="Dhanushka-Madhushanka-CV.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setIsOpen(false)}
                 className="text-sm font-medium text-accent hover:text-accent-hover transition-colors"
               >
                 Download Resume
-              </Link>
+              </a>
             </nav>
           </motion.div>
         )}

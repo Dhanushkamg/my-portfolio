@@ -49,32 +49,33 @@ export function Hero() {
                 View Projects
                 <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link
+              <a
                 href={personal.resumeUrl}
+                download="Dhanushka-Madhushanka-CV.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 bg-surface hover:bg-surface/80 border border-border text-foreground px-6 py-3 rounded-md font-medium transition-colors"
               >
                 <Download className="w-4 h-4" />
                 Download Resume
-              </Link>
+              </a>
             </div>
 
             <div className="flex items-center gap-5 pt-6 text-muted">
               {personal.github && (
-                <Link href={personal.github} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors" aria-label="GitHub">
+                <a href={personal.github} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors" aria-label="GitHub">
                   <GithubIcon className="w-6 h-6" />
-                </Link>
+                </a>
               )}
               {personal.linkedin && (
-                <Link href={personal.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors" aria-label="LinkedIn">
+                <a href={personal.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors" aria-label="LinkedIn">
                   <LinkedinIcon className="w-6 h-6" />
-                </Link>
+                </a>
               )}
               {personal.email && (
-                <Link href={`mailto:${personal.email}`} className="hover:text-foreground transition-colors" aria-label="Email">
+                <a href={`mailto:${personal.email}`} className="hover:text-foreground transition-colors" aria-label="Email">
                   <Mail className="w-6 h-6" />
-                </Link>
+                </a>
               )}
             </div>
           </motion.div>
