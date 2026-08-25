@@ -30,8 +30,8 @@ export const projects: Project[] = [
       "Order processing and backend transaction validation",
       "Idempotent webhook handling for PayHere integration"
     ],
-    github: null, // Placeholder
-    liveDemo: null, // Placeholder
+    github: "https://github.com/Dhanushkamg/technest-frontend",
+    liveDemo: null,
     image: "technest.webp" // We'll handle this in the UI components
   },
   {
@@ -41,8 +41,8 @@ export const projects: Project[] = [
     shortDescription: "A full-stack platform connecting customers, pharmacists, suppliers, and admins, featuring AI content generation.",
     description: "A full-stack pharmacy supply chain platform connecting customers, pharmacists, suppliers, and administrators.",
     technologies: [
-      "React 19", "TypeScript", "NestJS 11", "Firebase", "Groq API",
-      "Llama models", "PayHere", "jsPDF", "React Native", "Tailwind CSS"
+      "React 19", "TypeScript", "Tailwind CSS", "React Native", "NestJS 11",
+      "Firebase", "Groq API", "Llama models", "PayHere", "jsPDF", "jsPDF-AutoTable"
     ],
     features: [
       "Multi-role pharmacy workflow",
@@ -53,15 +53,16 @@ export const projects: Project[] = [
       "Mobile application integration"
     ],
     contributions: [
-      "System design and sequence diagrams",
-      "Secure checkout and PayHere payment processing integration",
-      "Automated PDF invoice generation using jsPDF",
-      "AI-powered health blog and automated content generation via Groq API (Llama models)",
-      "Pharmacist approval workflows",
-      "Mobile application development and cross-platform integration"
+      "Checkout & Payment Integration",
+      "Secure Payment Processing",
+      "Invoice Generation",
+      "AI-Powered Health Blog System",
+      "Pharmacist Approval Workflow",
+      "Mobile App Integration",
+      "System Design & Documentation"
     ],
-    github: null, // Placeholder
-    liveDemo: null, // Placeholder
+    github: "https://github.com/SoftwareProjectInnovateX",
+    liveDemo: "https://innovatexuom.vercel.app/",
     image: "medicarex.webp"
   }
 ];

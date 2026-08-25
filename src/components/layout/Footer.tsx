@@ -6,8 +6,6 @@ import { Mail } from "lucide-react";
 import Link from "next/link";
 
 export function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
     <footer className="border-t border-border bg-surface/50 py-12">
       <div className="container mx-auto px-4 md:px-6">
@@ -36,11 +34,8 @@ export function Footer() {
 
         </div>
         
-        <div className="mt-8 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted">
-          <p>© {currentYear} {personal.name}. All rights reserved.</p>
-          <p>
-            Built with <span className="text-accent font-medium">Next.js</span> & <span className="text-accent font-medium">Tailwind CSS</span>
-          </p>
+        <div className="mt-8 pt-8 border-t border-border flex flex-col md:flex-row justify-center items-center gap-4 text-xs text-muted">
+          <p>© 2026 {personal.name}. All rights reserved.</p>
         </div>
       </div>
     </footer>
