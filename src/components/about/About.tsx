@@ -25,16 +25,20 @@ export function About() {
             ))}
           </div>
 
-          <div className="mt-12">
+          <div className="mt-16">
             <h3 className="text-xl font-bold text-foreground mb-6 font-mono uppercase tracking-widest text-sm border-l-2 border-accent pl-4">Education</h3>
             <div className="grid gap-6 sm:grid-cols-2">
               {personal.education.map((edu, index) => (
-                <div key={index} className="bg-surface border border-border p-5 rounded-lg">
-                  <h4 className="font-bold text-foreground">{edu.degree}</h4>
-                  <p className="text-accent text-sm mt-1 mb-3">{edu.institution}</p>
-                  <div className="flex justify-between items-center text-sm text-muted">
-                    <span>{edu.duration}</span>
-                    <span className="font-medium bg-background px-2 py-1 rounded text-xs">{edu.details}</span>
+                <div key={index} className="bg-surface/50 border border-border p-5 rounded-lg flex flex-col h-full">
+                  <h4 className="font-bold text-foreground leading-tight">{edu.degree}</h4>
+                  <p className="text-accent text-sm mt-1 mb-4">{edu.institution}</p>
+                  <div className="mt-auto flex justify-between items-center text-sm text-muted">
+                    <span className="font-mono">{edu.duration}</span>
+                    {edu.details && (
+                      <span className="font-medium border border-border/50 text-muted-foreground px-2 py-1 rounded text-xs">
+                        {edu.details}
+                      </span>
+                    )}
                   </div>
                 </div>
               ))}

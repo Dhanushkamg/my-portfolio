@@ -3,12 +3,13 @@
 import { motion } from "motion/react";
 import { personal } from "@/data/personal";
 import Link from "next/link";
-import { Mail, Download, ArrowRight } from "lucide-react";
+import { Mail, Download, ArrowRight, User } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/Icons";
+import Image from "next/image";
 
 export function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center pt-16 md:pt-24 pb-12 overflow-hidden">
+    <section className="relative min-h-[90vh] flex items-center pt-20 md:pt-28 pb-16 overflow-hidden">
       {/* Background gradients */}
       <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-accent/20 rounded-full blur-[120px] opacity-50 pointer-events-none" />
       <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] opacity-50 pointer-events-none" />
@@ -37,7 +38,7 @@ export function Hero() {
             </div>
 
             <p className="text-muted text-lg max-w-lg leading-relaxed text-balance">
-              {personal.bio}
+              I build complete software systems, not just interfaces. Focused on end-to-end development including backend architecture, database design, AI integration, and full-stack applications.
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-2">
@@ -60,26 +61,51 @@ export function Hero() {
             </div>
 
             <div className="flex items-center gap-5 pt-6 text-muted">
-              <Link href={personal.github} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors" aria-label="GitHub">
-                <GithubIcon className="w-6 h-6" />
-              </Link>
-              <Link href={personal.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors" aria-label="LinkedIn">
-                <LinkedinIcon className="w-6 h-6" />
-              </Link>
-              <Link href={`mailto:${personal.email}`} className="hover:text-foreground transition-colors" aria-label="Email">
-                <Mail className="w-6 h-6" />
-              </Link>
+              {personal.github && (
+                <Link href={personal.github} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors" aria-label="GitHub">
+                  <GithubIcon className="w-6 h-6" />
+                </Link>
+              )}
+              {personal.linkedin && (
+                <Link href={personal.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors" aria-label="LinkedIn">
+                  <LinkedinIcon className="w-6 h-6" />
+                </Link>
+              )}
+              {personal.email && (
+                <Link href={`mailto:${personal.email}`} className="hover:text-foreground transition-colors" aria-label="Email">
+                  <Mail className="w-6 h-6" />
+                </Link>
+              )}
             </div>
           </motion.div>
 
-          {/* Right Visual - IDE/Code Concept */}
+          {/* Right Visual - Profile Image + IDE/Code Concept */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="hidden lg:block relative"
+            className="relative lg:h-[500px] flex items-center justify-center lg:justify-end mt-8 lg:mt-0"
           >
-            <div className="rounded-xl overflow-hidden border border-border bg-[#0f172a] shadow-2xl relative group">
+            {/* Profile Image Element (Behind/Beside Code Editor) */}
+            <div className="absolute top-0 right-12 lg:right-0 w-[240px] md:w-[280px] aspect-[3/4] rounded-2xl overflow-hidden border-2 border-border shadow-2xl z-0 transform translate-x-4 -translate-y-8 lg:translate-x-8 lg:-translate-y-12 bg-surface">
+              {/* Fallback pattern if image is missing */}
+              <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:16px_16px]" />
+              <div className="absolute inset-0 flex items-center justify-center text-muted/30">
+                <User className="w-24 h-24" />
+              </div>
+              
+              <Image 
+                src="/profile/dhanushka.webp" 
+                alt="Dhanushka Madhushanka"
+                fill
+                className="object-cover relative z-10"
+                sizes="(max-width: 768px) 240px, 280px"
+                priority
+              />
+            </div>
+
+            {/* Code Editor Element (Overlapping) */}
+            <div className="w-[90%] md:w-[450px] rounded-xl overflow-hidden border border-border bg-[#0f172a] shadow-2xl relative z-10 group mt-24 lg:mt-16 -ml-4 lg:-ml-12 lg:mr-16">
               {/* Editor Header */}
               <div className="h-10 bg-[#1e293b] flex items-center px-4 gap-2 border-b border-border/50">
                 <div className="flex gap-1.5">
@@ -101,7 +127,7 @@ export function Hero() {
                 <p className="pl-8"><span className="text-green-400">&quot;Backend Systems&quot;</span></p>
                 <p className="pl-4">],</p>
                 <p className="pl-4"><span className="text-slate-400">technologies:</span> [</p>
-                <p className="pl-8"><span className="text-green-400">&quot;React&quot;</span>, <span className="text-green-400">&quot;Next.js&quot;</span>, <span className="text-green-400">&quot;Java&quot;</span>, <span className="text-green-400">&quot;Spring Boot&quot;</span>, <span className="text-green-400">&quot;TypeScript&quot;</span></p>
+                <p className="pl-8"><span className="text-green-400">&quot;React&quot;</span>, <span className="text-green-400">&quot;TypeScript&quot;</span>, <span className="text-green-400">&quot;NestJS&quot;</span>, <span className="text-green-400">&quot;Java&quot;</span></p>
                 <p className="pl-4">]</p>
                 <p>{'};'}</p>
                 
@@ -121,7 +147,7 @@ export function Hero() {
             <motion.div 
               animate={{ y: [0, -10, 0] }}
               transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-              className="absolute -bottom-6 -left-6 p-4 bg-surface border border-border rounded-lg shadow-xl backdrop-blur-sm"
+              className="absolute bottom-0 -left-2 lg:-left-6 p-4 bg-surface border border-border rounded-lg shadow-xl backdrop-blur-sm z-20"
             >
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent">

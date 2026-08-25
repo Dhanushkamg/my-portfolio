@@ -5,6 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink, CheckCircle2 } from "lucide-react";
 import { GithubIcon } from "@/components/ui/Icons";
+import Image from "next/image";
 
 export function generateStaticParams() {
   return projects.map((project) => ({
@@ -80,13 +81,26 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
               </div>
             </div>
 
-            {/* Visual Placeholder */}
+            {/* Visual Image */}
             <div className="w-full aspect-video rounded-xl bg-surface border border-border flex flex-col items-center justify-center mb-16 shadow-lg overflow-hidden relative">
-               <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none opacity-20" />
-               <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center mb-4 relative z-10">
-                 <span className="text-accent font-mono font-bold text-3xl">{project.title.charAt(0)}</span>
-               </div>
-               <p className="font-mono text-muted relative z-10">{project.image}</p>
+               {project.image ? (
+                 <Image
+                   src={`/projects/${project.image}`}
+                   alt={project.title}
+                   fill
+                   className="object-cover"
+                   sizes="(max-width: 768px) 100vw, 1024px"
+                   priority
+                 />
+               ) : (
+                 <>
+                   <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none opacity-20" />
+                   <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center mb-4 relative z-10">
+                     <span className="text-accent font-mono font-bold text-3xl">{project.title.charAt(0)}</span>
+                   </div>
+                   <p className="font-mono text-muted relative z-10">{project.title}</p>
+                 </>
+               )}
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { GithubIcon } from "@/components/ui/Icons";
 import { Project } from "@/data/projects";
+import Image from "next/image";
 
 interface ProjectCardProps {
   project: Project;
@@ -18,19 +19,28 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative flex flex-col md:flex-row gap-8 bg-surface border border-border p-6 rounded-xl hover:border-accent/50 transition-colors"
+      className="group relative flex flex-col md:flex-row gap-8 bg-surface/50 border border-border p-6 rounded-xl hover:border-accent/50 transition-colors"
     >
-      {/* Project Visual Placeholder */}
+      {/* Project Visual */}
       <div className="w-full md:w-5/12 aspect-[4/3] rounded-lg overflow-hidden bg-background border border-border relative group-hover:border-accent/30 transition-colors flex items-center justify-center">
-        {/* Placeholder gradient and text, representing the image */}
-        <div className="absolute inset-0 bg-gradient-to-br from-surface to-background flex items-center justify-center">
-          <div className="text-center p-6">
-            <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-3">
-              <span className="text-accent font-mono font-bold text-xl">{project.title.charAt(0)}</span>
+        {project.image ? (
+          <Image
+            src={`/projects/${project.image}`}
+            alt={project.title}
+            fill
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, 40vw"
+          />
+        ) : (
+          <div className="absolute inset-0 bg-gradient-to-br from-surface to-background flex items-center justify-center">
+            <div className="text-center p-6">
+              <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-3">
+                <span className="text-accent font-mono font-bold text-xl">{project.title.charAt(0)}</span>
+              </div>
+              <p className="font-mono text-sm text-muted">{project.title}</p>
             </div>
-            <p className="font-mono text-sm text-muted">{project.image}</p>
           </div>
-        </div>
+        )}
       </div>
 
       {/* Project Details */}

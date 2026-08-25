@@ -32,7 +32,7 @@ export const projects: Project[] = [
     ],
     github: null, // Placeholder
     liveDemo: null, // Placeholder
-    image: "technest-preview" // We'll handle this in the UI components
+    image: "technest.webp" // We'll handle this in the UI components
   },
   {
     slug: "medicarex",
@@ -62,6 +62,6 @@ export const projects: Project[] = [
     ],
     github: null, // Placeholder
     liveDemo: null, // Placeholder
-    image: "medicarex-preview"
+    image: "medicarex.webp"
   }
 ];

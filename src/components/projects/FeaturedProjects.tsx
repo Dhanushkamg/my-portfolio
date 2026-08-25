@@ -8,7 +8,7 @@ import { ArrowRight } from "lucide-react";
 
 export function FeaturedProjects() {
   return (
-    <section id="projects" className="py-24">
+    <section id="projects" className="py-20">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <motion.div 
@@ -42,7 +42,7 @@ export function FeaturedProjects() {
           </motion.div>
         </div>
 
-        <div className="flex flex-col gap-12 md:gap-24">
+        <div className="flex flex-col gap-12 md:gap-16">
           {projects.slice(0, 2).map((project, index) => (
             <ProjectCard key={project.slug} project={project} index={index} />
           ))}
