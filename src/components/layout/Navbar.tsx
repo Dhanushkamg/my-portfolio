@@ -68,7 +68,7 @@ export function Navbar() {
           <div className="h-4 w-px bg-border mx-2" />
           <a
             href={personal.resumeUrl}
-            download="Dhanushka-Madhushanka-CV.pdf"
+            download="Dhanushka_Madhushanka_CV.pdf"
             className="text-sm font-medium text-accent hover:text-accent-hover transition-colors"
           >
             Resume
@@ -115,7 +115,7 @@ export function Navbar() {
               <div className="h-px w-full bg-border my-2" />
               <a
                 href={personal.resumeUrl}
-                download="Dhanushka-Madhushanka-CV.pdf"
+                download="Dhanushka_Madhushanka_CV.pdf"
                 onClick={() => setIsOpen(false)}
                 className="text-sm font-medium text-accent hover:text-accent-hover transition-colors"
               >
