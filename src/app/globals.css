@@ -3,7 +3,7 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 :root {
-  --background: #f8fafc; /* Slate 50 - crisp contrast against white cards */
+  --background: #f1f5f9; /* Slate 100 - soft cool gray for better card contrast */
   --foreground: #0f172a;
   --surface: #ffffff;
   --border: #cbd5e1; /* Slate 300 - stronger border definition */
