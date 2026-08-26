@@ -4,7 +4,7 @@ A modern, production-quality personal developer portfolio built to showcase comp
 
 ## Live Demo
 
-*Coming soon*
+[View Live Portfolio](https://my-portfolio-rho-rouge-61.vercel.app/)
 
 ## ✨ Key Features
 
