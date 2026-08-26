@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import { personal } from "@/data/personal";
-import { Mail, Phone } from "lucide-react";
+import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/Icons";
 
 export function Contact() {
@@ -27,21 +27,97 @@ export function Contact() {
             </p>
           </motion.div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <a 
-              href={`mailto:${personal.email}`}
-              className="inline-flex items-center gap-3 bg-foreground text-background hover:bg-foreground/90 px-8 py-4 rounded-md font-medium text-lg transition-colors w-full sm:w-auto justify-center"
-            >
-              <Mail className="w-5 h-5" />
-              Say Hello
-            </a>
-            <a 
-              href={`tel:${personal.phone.replace(/\s+/g, '')}`}
-              className="inline-flex items-center gap-3 bg-surface hover:bg-surface/80 border border-border text-foreground px-8 py-4 rounded-md font-medium text-lg transition-colors w-full sm:w-auto justify-center"
-            >
-              <Phone className="w-5 h-5" />
-              Call Me
-            </a>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mt-12 max-w-5xl mx-auto text-left">
+            {/* Left: Contact Information */}
+            <div className="bg-surface border border-border rounded-xl p-6 md:p-8 shadow-sm flex flex-col h-full">
+              <h4 className="text-xl font-bold mb-6 text-foreground">Contact Information</h4>
+              <div className="flex flex-col gap-6">
+                <a href={`mailto:${personal.email}`} className="flex items-start gap-4 group">
+                  <div className="w-12 h-12 rounded-full bg-accent/10 text-accent flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-white transition-colors">
+                    <Mail className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-muted mb-1">Email</p>
+                    <p className="text-foreground font-medium group-hover:text-accent transition-colors break-all">{personal.email}</p>
+                  </div>
+                </a>
+                
+                <a href={`tel:${personal.phone.replace(/\s+/g, '')}`} className="flex items-start gap-4 group">
+                  <div className="w-12 h-12 rounded-full bg-accent/10 text-accent flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-white transition-colors">
+                    <Phone className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-muted mb-1">Phone</p>
+                    <p className="text-foreground font-medium group-hover:text-accent transition-colors">{personal.phone}</p>
+                  </div>
+                </a>
+                
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-accent/10 text-accent flex items-center justify-center shrink-0">
+                    <MapPin className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-muted mb-1">Location</p>
+                    <p className="text-foreground font-medium">Sri Lanka</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Message Form */}
+            <div className="bg-surface border border-border rounded-xl p-6 md:p-8 shadow-sm">
+              <h4 className="text-xl font-bold mb-6 text-foreground">Send Me a Message</h4>
+              <form 
+                action={`mailto:${personal.email}`} 
+                method="POST" 
+                encType="text/plain"
+                className="flex flex-col gap-5"
+              >
+                <div className="space-y-1.5">
+                  <label htmlFor="name" className="text-sm font-medium text-foreground">Name</label>
+                  <input 
+                    type="text" 
+                    id="name" 
+                    name="name" 
+                    placeholder="Enter your full name" 
+                    required
+                    className="w-full bg-background border border-border rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent text-sm text-foreground placeholder:text-muted transition-all"
+                  />
+                </div>
+                
+                <div className="space-y-1.5">
+                  <label htmlFor="email" className="text-sm font-medium text-foreground">Email</label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    placeholder="Enter your email address" 
+                    required
+                    className="w-full bg-background border border-border rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent text-sm text-foreground placeholder:text-muted transition-all"
+                  />
+                </div>
+                
+                <div className="space-y-1.5">
+                  <label htmlFor="message" className="text-sm font-medium text-foreground">Message</label>
+                  <textarea 
+                    id="message" 
+                    name="message" 
+                    rows={4}
+                    placeholder="Tell me about your project or just say hello!" 
+                    required
+                    className="w-full bg-background border border-border rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent text-sm text-foreground placeholder:text-muted transition-all resize-none"
+                  />
+                </div>
+                
+                <button 
+                  type="submit"
+                  className="inline-flex items-center justify-center gap-2 bg-foreground text-background hover:bg-foreground/90 px-6 py-3.5 rounded-md font-medium transition-colors w-full mt-2 group"
+                >
+                  <Send className="w-4 h-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
+                  Send Message
+                </button>
+              </form>
+            </div>
           </div>
 
           <div className="mt-16 flex items-center justify-center gap-8">
