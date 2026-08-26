@@ -1,11 +1,39 @@
 "use client";
 
+import * as React from "react";
 import { motion } from "motion/react";
 import { personal } from "@/data/personal";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/Icons";
 
 export function Contact() {
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [formData, setFormData] = React.useState({ name: "", email: "", message: "" });
+  const [feedback, setFeedback] = React.useState("");
+
+  const isFormValid = formData.name.trim() !== "" && formData.email.trim() !== "" && formData.message.trim() !== "";
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!isFormValid) return;
+
+    setIsSubmitting(true);
+    setFeedback("Opening your email client...");
+
+    const subject = encodeURIComponent(`Portfolio Contact - ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name:\n${formData.name}\n\nSender Email:\n${formData.email}\n\nMessage:\n${formData.message}`
+    );
+
+    window.location.href = `mailto:${personal.email}?subject=${subject}&body=${body}`;
+
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setFeedback("");
+      setFormData({ name: "", email: "", message: "" });
+    }, 3000);
+  };
+
   return (
     <section id="contact" className="py-24">
       <div className="container mx-auto px-4 md:px-6">
@@ -68,9 +96,7 @@ export function Contact() {
             <div className="bg-surface border border-border rounded-xl p-6 md:p-8 shadow-sm">
               <h4 className="text-xl font-bold mb-6 text-foreground">Send Me a Message</h4>
               <form 
-                action={`mailto:${personal.email}`} 
-                method="POST" 
-                encType="text/plain"
+                onSubmit={handleSubmit}
                 className="flex flex-col gap-5"
               >
                 <div className="space-y-1.5">
@@ -81,6 +107,8 @@ export function Contact() {
                     name="name" 
                     placeholder="Enter your full name" 
                     required
+                    value={formData.name}
+                    onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
                     className="w-full bg-background border border-border rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent text-sm text-foreground placeholder:text-muted transition-all"
                   />
                 </div>
@@ -93,6 +121,8 @@ export function Contact() {
                     name="email" 
                     placeholder="Enter your email address" 
                     required
+                    value={formData.email}
+                    onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
                     className="w-full bg-background border border-border rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent text-sm text-foreground placeholder:text-muted transition-all"
                   />
                 </div>
@@ -105,17 +135,23 @@ export function Contact() {
                     rows={4}
                     placeholder="Tell me about your project or just say hello!" 
                     required
+                    value={formData.message}
+                    onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
                     className="w-full bg-background border border-border rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent text-sm text-foreground placeholder:text-muted transition-all resize-none"
                   />
                 </div>
                 
                 <button 
                   type="submit"
-                  className="inline-flex items-center justify-center gap-2 bg-foreground text-background hover:bg-foreground/90 px-6 py-3.5 rounded-md font-medium transition-colors w-full mt-2 group"
+                  disabled={!isFormValid || isSubmitting}
+                  className={`inline-flex items-center justify-center gap-2 bg-foreground text-background hover:bg-foreground/90 px-6 py-3.5 rounded-md font-medium transition-colors w-full mt-2 group ${(!isFormValid || isSubmitting) ? "opacity-70 cursor-not-allowed" : ""}`}
                 >
                   <Send className="w-4 h-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
                   Send Message
                 </button>
+                {feedback && (
+                  <p className="text-sm text-accent text-center mt-1 animate-pulse">{feedback}</p>
+                )}
               </form>
             </div>
           </div>
