@@ -9,7 +9,7 @@ import Image from "next/image";
 
 export function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center pt-20 md:pt-28 pb-16 overflow-hidden">
+    <section className="hero-locked relative min-h-[90vh] flex items-center pt-20 md:pt-28 pb-16 overflow-hidden">
       {/* Background gradients */}
       <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-accent/20 rounded-full blur-[120px] opacity-50 pointer-events-none" />
       <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] opacity-50 pointer-events-none" />

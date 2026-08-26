@@ -3,13 +3,22 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 :root {
-  --background: #fdfdfd; /* Warm white background */
+  --background: #f8fafc; /* Slate 50 - crisp contrast against white cards */
   --foreground: #0f172a;
   --surface: #ffffff;
-  --border: #e2e8f0; /* Soft gray borders */
-  --muted: #64748b;
+  --border: #cbd5e1; /* Slate 300 - stronger border definition */
+  --muted: #475569; /* Slate 600 - stronger muted text */
   --accent: #4f46e5;
   --accent-hover: #4338ca;
+}
+
+/* Lock Hero light theme to its exact original values */
+html:not([data-theme='dark']) .hero-locked {
+  --background: #fdfdfd;
+  --surface: #ffffff;
+  --border: #e2e8f0;
+  --muted: #64748b;
+  --foreground: #0f172a;
 }
 
 [data-theme='dark'] {
