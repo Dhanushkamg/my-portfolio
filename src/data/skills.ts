@@ -13,18 +13,18 @@ export const skills = [
   },
   {
     category: "Databases & Storage",
-    items: ["PostgreSQL (Neon)", "MySQL", "MongoDB", "Firebase / Firestore"]
+    items: ["PostgreSQL", "MySQL", "MongoDB", "Firebase (Firestore)"]
   },
   {
     category: "DevOps & Cloud",
-    items: ["AWS", "Docker"]
+    items: ["Docker", "GitHub Actions (CI/CD)", "AWS Cloud Practitioner"]
   },
   {
     category: "Testing",
-    items: ["Postman", "Cucumber (BDD)"]
+    items: ["JUnit", "Postman"]
   },
   {
     category: "Developer Tools",
-    items: ["Git", "GitHub", "Swagger / OpenAPI", "Jira"]
+    items: ["Git", "GitHub", "Swagger/OpenAPI", "Jira"]
   }
 ];
