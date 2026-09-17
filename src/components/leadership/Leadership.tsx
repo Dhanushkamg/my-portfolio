@@ -20,14 +20,14 @@ export function Leadership() {
               {"//"} Community
             </h2>
             <h3 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
-              Leadership
+              Extracurricular
             </h3>
             <p className="text-muted leading-relaxed">
               Active involvement in the university community, facilitating communication and organizing academic matters.
             </p>
           </motion.div>
 
-          <div className="w-full lg:w-2/3">
+          <div className="w-full lg:w-2/3 flex flex-col gap-6">
             {leadership.map((item, index) => (
               <motion.div
                 key={index}
