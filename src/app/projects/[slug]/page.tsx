@@ -105,6 +105,29 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                )}
             </div>
 
+            {/* Image Gallery */}
+            {project.gallery && project.gallery.length > 0 && (
+              <div className="mb-16">
+                <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+                  <span className="text-accent font-mono text-sm">{"//"} Gallery</span>
+                  Project Showcase
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {project.gallery.map((img, idx) => (
+                    <div key={idx} className="w-full aspect-video rounded-xl bg-surface border border-border flex flex-col items-center justify-center shadow-md overflow-hidden relative group">
+                      <Image
+                        src={`/projects/${img}`}
+                        alt={`${project.title} screenshot ${idx + 1}`}
+                        fill
+                        className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
               <div className="md:col-span-2 space-y-12">
                 
