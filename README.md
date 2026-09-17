@@ -1,5 +1,11 @@
 # 🚀 Dhanushka Madhushanka — Software Engineer Portfolio
 
+<div align="center">
+  <a href="https://my-portfolio-rho-rouge-61.vercel.app/" target="_blank">
+    <img src="https://img.shields.io/badge/View_Live_Demo-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo" />
+  </a>
+</div>
+
 <p align="center">
   <br />
   A modern, production-quality personal developer portfolio showcasing complete end-to-end software systems, including backend architecture, geospatial databases, AI-powered functionality, secure payments, and full-stack applications.
